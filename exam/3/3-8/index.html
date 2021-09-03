@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue chapter 3</title>
+  </head>
+  <body>
+    <div id="app">
+      <h3>테스트</h3>
+      <!-- 상위 속성인 message를 하위 속성 propsdata로 전달 -->
+      <child-component v-bind:propsdata="message"></child-component>
+    </div>
+    <!-- vue.js import -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+      Vue.component('child-component',{
+        props:['propsdata'],
+        template:'<p>{{propsdata}}</p>'
+      });
+      new Vue({
+        el:'#app',
+        data:{
+          message:'Hello Vue. passed from parent component'
+        }
+      });
+    </script>
+  </body>
+</html>
