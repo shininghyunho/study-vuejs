@@ -6,28 +6,31 @@
   </head>
   <body>
     <div id="app">
-      <h1>뷰 라우터 예제</h1>
-      <p>
-        <router-link to="/main">Main 컴포넌트로 이동</router-link>
-        <router-link to="/login">Login 컴포넌트로 이동</router-link>
-      </p>
+      <h1>Named 뷰 라우터 예제</h1>
+      <router-view name="header"></router-view>
       <router-view></router-view>
+      <router-view name="footer"></router-view>
     </div>
 
     <!-- vue.js import -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
     <script>
-      var Main={template:'<div>main page</div>'};
-      var Login={template:'<div>login page</div>'};
-
-      var routes=[
-        {path:'/main',component:Main},
-        {path:'/login',component:Login}
-      ];
+      var Body={template:'<div>This is Body</div>'};
+      var Header={template:'<div>This is Header</div>'};
+      var Footer={template:'<div>This is Footer</div>'};
 
       var router = new VueRouter({
-        routes
+        routes:[
+        {
+          path:'/',
+          components:{
+            default:Body,
+            header:Header,
+            footer:Footer
+          }
+        }
+      ]
       });
 
       var app = new Vue({

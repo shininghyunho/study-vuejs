@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue Example</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>뷰 디렉티브</h1>
+      <a v-if="flag">Do It Vue.js! v-if</a>
+      <ul>
+        <li v-for="system in systems">{{system}}</li>
+      </ul>
+      <p v-show="flag">Do It Vue.js v-show</p>
+      <h5 v-bind:id="uid">뷰 입문서</h5>
+      <button v-on:click="popupAlert">경고 창 버튼</button>
+    </div>
+
+    <!-- vue.js import -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        data:{
+          flag:true,
+          systems:['andriod','ios','window'],
+          uid:10
+        },
+        methods:{
+          popupAlert:function(){
+            return alert('경고창 입니다.');
+          }
+        }
+      }).$mount('#app');
+    </script>
+  </body>
+</html>
